@@ -1,7 +1,7 @@
 const util = require('./utils')
 const {docs} = require('./documents')
 
-function search(query){
+function search(query, callback){
     var documents = util.setAllDocsToLowercase(query, docs)
     //========================================================================== Step One
     var allWords = util.getAllWords(documents)
@@ -14,7 +14,8 @@ function search(query){
     var similarityMap = util.getSimilarityMap(TF_IDFMap, documents)
     //========================================================================== Step Five
     var SearchResult = util.getSearchResult(similarityMap, documents)
-    return SearchResult
+    
+    callback(SearchResult)
 }
 
 module.exports = {search}
