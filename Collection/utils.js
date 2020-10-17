@@ -101,9 +101,17 @@ function getSimilarityMap(TF_IDFMap, documents){
 function getCos(queryVector, docVector){
     var normQuery = d.norm(queryVector)
     var normDoc = d.norm(docVector)
-    var dot = robustDot(queryVector, docVector)
+    var dot = getDotProduct(queryVector, docVector)
     if (dot.length == 2) { dot = dot[1] } else { dot = 0.0 }
     return (dot / (normQuery * normDoc))
+}
+
+function getDotProduct(vector1, vector2) {
+    var result = 0;
+    for (var i = 0; i < vector1.length; i++) {
+      result += vector1[i] * vector2[i];
+    }
+    return result;
 }
 //=============================================================== For Output Search Result
 function getSearchResult(similarityMap, documents){
