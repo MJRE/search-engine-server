@@ -121,7 +121,8 @@ function getSearchResult(similarityMap, documents){
         if(similarityMap.get(object.key) > 0.0 && object.key != 'Query'){
             obj.key = object.key
             obj.content = object.content
-            obj.similarity = (obj.similarity > 0.0 && obj.similarity <= 1)? 1:parseInt((similarityMap.get(object.key) * 100))
+            sim = similarityMap.get(object.key);
+            obj.similarity = (sim > 0.0 && sim <= 1)? 1:parseInt((sim * 100))
             result.push(obj)
         }
     });
