@@ -118,7 +118,7 @@ function getSearchResult(similarityMap, documents){
     var obj = {key: '', content:'', similarity: 0}
     documents.forEach(object => {
         obj = {key: '', content:'', similarity: 0}
-        if(similarityMap.get(object.key) > 0.0 && object.key != 'Query'){
+        if(similarityMap.get(object.key) > 0.0099 && object.key != 'Query'){
             obj.key = object.key
             obj.content = object.content
             obj.similarity = parseInt((similarityMap.get(object.key) * 100))
