@@ -102,7 +102,6 @@ function getCos(queryVector, docVector){
     var normQuery = d.norm(queryVector)
     var normDoc = d.norm(docVector)
     var dot = getDotProduct(queryVector, docVector)
-    if (dot.length == 2) { dot = dot[1] } else { dot = 0.0 }
     return (dot / (normQuery * normDoc))
 }
 
